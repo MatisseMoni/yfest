@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="3.1" type="template" client="site" method="upgrade">
+    <name>YOOtheme</name>
+    <element>yootheme</element>
+    <version>3.0.21</version>
+    <creationDate>January 2023</creationDate>
+    <copyright>Copyright (C) YOOtheme GmbH</copyright>
+    <license>GNU General Public License</license>
+    <author>YOOtheme</author>
+    <authorEmail>info@yootheme.com</authorEmail>
+    <authorUrl>https://yootheme.com</authorUrl>
+    <description>
+        <![CDATA[
+            <div id="tmpl-description">A powerful, flexible and elegant website builder that allows you to create complex pages within minutes and customize every aspect of the theme.</div>
+            <script src="../templates/yootheme/templateDetails.min.js" defer></script>
+        ]]>
+    </description>
+    <files>
+        <folder>js</folder>
+        <folder>css</folder>
+        <folder>fonts</folder>
+        <folder>less</folder>
+        <folder>html</folder>
+        <folder>vendor</folder>
+        <folder>language</folder>
+        <folder>templates</folder>
+        <filename>template_bootstrap.php</filename>
+        <filename>bootstrap.php</filename>
+        <filename>config.php</filename>
+        <filename>CHANGELOG.md</filename>
+        <filename>component.php</filename>
+        <filename>error.php</filename>
+        <filename>index.php</filename>
+        <filename>NEWS.md</filename>
+        <filename>offline.php</filename>
+        <filename>template_preview.png</filename>
+        <filename>template_preview.jpg</filename>
+        <filename>template_thumbnail.png</filename>
+        <filename>templateDetails.xml</filename>
+        <filename>templateDetails.min.js</filename>
+    </files>
+    <positions>
+        <position>toolbar-left</position>
+        <position>toolbar-right</position>
+        <position>logo</position>
+        <position>navbar</position>
+        <position>header</position>
+        <position>dialog</position>
+        <position>logo-mobile</position>
+        <position>navbar-mobile</position>
+        <position>header-mobile</position>
+        <position>dialog-mobile</position>
+        <position>top</position>
+        <position>sidebar</position>
+        <position>bottom</position>
+        <position>builder-1</position>
+        <position>builder-2</position>
+        <position>builder-3</position>
+        <position>builder-4</position>
+        <position>builder-5</position>
+        <position>builder-6</position>
+    </positions>
+    <languages folder="language">
+        <language tag="ca-ES">ca-ES/ca-ES.tpl_yootheme.ini</language>
+        <language tag="cs-CZ">cs-CZ/cs-CZ.tpl_yootheme.ini</language>
+        <language tag="da-DK">da-DK/da-DK.tpl_yootheme.ini</language>
+        <language tag="de-DE">de-DE/de-DE.tpl_yootheme.ini</language>
+        <language tag="el-GR">el-GR/el-GR.tpl_yootheme.ini</language>
+        <language tag="en-GB">en-GB/en-GB.tpl_yootheme.ini</language>
+        <language tag="en-US">en-US/en-US.tpl_yootheme.ini</language>
+        <language tag="es-ES">es-ES/es-ES.tpl_yootheme.ini</language>
+        <language tag="et-EE">et-EE/et-EE.tpl_yootheme.ini</language>
+        <language tag="fi-FI">fi-FI/fi-FI.tpl_yootheme.ini</language>
+        <language tag="fr-FR">fr-FR/fr-FR.tpl_yootheme.ini</language>
+        <language tag="hr-HR">hr-HR/hr-HR.tpl_yootheme.ini</language>
+        <language tag="hu-HU">hu-HU/hu-HU.tpl_yootheme.ini</language>
+        <language tag="id-ID">id-ID/id-ID.tpl_yootheme.ini</language>
+        <language tag="it-IT">it-IT/it-IT.tpl_yootheme.ini</language>
+        <language tag="lb-LU">lb-LU/lb-LU.tpl_yootheme.ini</language>
+        <language tag="nb-NO">nb-NO/nb-NO.tpl_yootheme.ini</language>
+        <language tag="nl-NL">nl-NL/nl-NL.tpl_yootheme.ini</language>
+        <language tag="nn-NO">nn-NO/nn-NO.tpl_yootheme.ini</language>
+        <language tag="pl-PL">pl-PL/pl-PL.tpl_yootheme.ini</language>
+        <language tag="pt-BR">pt-BR/pt-BR.tpl_yootheme.ini</language>
+        <language tag="pt-PT">pt-PT/pt-PT.tpl_yootheme.ini</language>
+        <language tag="ro-RO">ro-RO/ro-RO.tpl_yootheme.ini</language>
+        <language tag="ru-RU">ru-RU/ru-RU.tpl_yootheme.ini</language>
+        <language tag="sk-SK">sk-SK/sk-SK.tpl_yootheme.ini</language>
+        <language tag="sr-RS">sr-RS/sr-RS.tpl_yootheme.ini</language>
+        <language tag="sv-SE">sv-SE/sv-SE.tpl_yootheme.ini</language>
+        <language tag="th-TH">th-TH/th-TH.tpl_yootheme.ini</language>
+        <language tag="tr-TR">tr-TR/tr-TR.tpl_yootheme.ini</language>
+        <language tag="uk-UA">uk-UA/uk-UA.tpl_yootheme.ini</language>
+    </languages>
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="config" type="hidden" filter="RAW" />
+                <field name="yootheme" type="hidden" default="true" />
+                <field name="uikit3" type="hidden" default="true" />
+                <field name="widgetkit" type="hidden" default="noconflict" />
+            </fieldset>
+        </fields>
+    </config>
+    <scriptfile>script.php</scriptfile>
+    <updateservers>
+        <server
+            type="extension"
+            priority="1"
+            name="YOOtheme"
+        >https://yootheme.com/api/update/yootheme_j33.xml</server>
+    </updateservers>
+</extension>

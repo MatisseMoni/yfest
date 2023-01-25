@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="3.1" type="package" method="upgrade">
+    <name>YOOtheme</name>
+    <packagename>yootheme</packagename>
+    <version>3.0.21</version>
+    <description>A powerful, flexible and elegant website builder that allows you to create complex pages within minutes and customize every aspect of the theme.</description>
+    <creationDate>January 2023</creationDate>
+    <copyright>Copyright (C) YOOtheme GmbH</copyright>
+    <license>GNU General Public License</license>
+    <author>YOOtheme</author>
+    <authorEmail>info@yootheme.com</authorEmail>
+    <authorUrl>https://yootheme.com</authorUrl>
+    <files folder="packages">
+        <file type="template" id="yootheme" client="site">tpl_template</file>
+        <file type="plugin" id="yootheme" group="system">plg_system_yootheme</file>
+        <file type="plugin" id="yootheme" group="installer">plg_installer_yootheme</file>
+        <file type="plugin" id="location" group="fields">plg_fields_location</file>
+        <file type="module" id="mod_yootheme_builder" client="site">mod_yootheme_builder</file>
+    </files>
+    <scriptfile>script.php</scriptfile>
+    <updateservers>
+        <server
+            type="extension"
+            priority="1"
+            name="YOOtheme"
+        >https://yootheme.com/api/update/yootheme_j33.xml</server>
+    </updateservers>
+</extension>

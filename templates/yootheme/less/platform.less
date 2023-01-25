@@ -1,0 +1,432 @@
+//
+// Loads Bootstrap Styles
+//
+// ========================================================================
+
+@import "../vendor/yootheme/theme-joomla/assets/less/bootstrap/bootstrap.less";
+
+/*
+ * Leading article
+ * Needed for Joomla
+ */
+
+.tm-leading-article .uk-article:last-child { padding-bottom: @global-margin; }
+
+/*
+ * Hide text from Page Break plugin
+ */
+
+.pagenavcounter { display: none; }
+
+/*
+ * Style pager from Page Break plugin
+ */
+
+.pagenavcounter ~ .pager {
+    margin-top: @margin-medium-margin;
+    margin-bottom: @margin-medium-margin;
+}
+
+/*
+ * Remove `br` elements if whole content is shown on one page using Page Break plugin
+ */
+
+.tm-page-break-remove-br ~ br { display: none; }
+
+/*
+ * Fix Drop Cap with Page Break
+ */
+
+.uk-dropcap > .tm-page-break-first-page + .pagenavcounter + p::first-letter:extend(.uk-dropcap > p:first-of-type::first-letter all) {}
+
+/*
+ * Fix Search Icon for Awesomplete
+ */
+
+.uk-search-default .awesomplete { display: block; }
+
+.uk-search-default .uk-search-icon:not(.uk-search-icon-flip) ~ .awesomplete > .uk-search-input { padding-left: (@search-default-icon-width + @search-default-icon-padding); }
+.uk-search-default .uk-search-icon-flip ~ .awesomplete > .uk-search-input { padding-right: (@search-default-icon-width + @search-default-icon-padding); }
+
+.uk-search-navbar .uk-search-icon:not(.uk-search-icon-flip) ~ .awesomplete > .uk-search-input { padding-left: (@search-navbar-icon-width + @search-navbar-icon-padding); }
+.uk-search-navbar .uk-search-icon-flip ~ .awesomplete > .uk-search-input { padding-right: (@search-navbar-icon-width + @search-navbar-icon-padding); }
+
+.uk-search-large .uk-search-icon:not(.uk-search-icon-flip) ~ .awesomplete > .uk-search-input { padding-left: (@search-large-icon-width + @search-large-icon-padding); }
+.uk-search-large .uk-search-icon-flip ~ .awesomplete > .uk-search-input { padding-right: (@search-large-icon-width + @search-large-icon-padding); }
+
+//
+// Hook
+//
+
+.hook-joomla-misc();
+.hook-joomla-misc() {}
+
+//
+// Joomla 4 specific
+//
+
+@internal-joomla-version: ~'';
+
+.hook-joomla-misc() when (@internal-joomla-version = 4) {
+
+    //
+    // Front-end Editing (Module Edit Icon)
+    //
+
+    [id*='module-'] { position: relative; }
+
+    .btn.jmodedit when (@internal-joomla-version = 4) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        // Style
+        // box-sizing: border-box;
+        // width: 24px;
+        // height: 24px;
+        // border-radius: 500px;
+        // background: @global-background;
+        // color: @global-color !important;
+        // display: inline-flex;
+        // justify-content: center;
+        // align-items: center;
+    }
+
+    //
+    // Tooltip (Front-end Editing)
+    //
+
+    [role='tooltip']:not(.uk-tooltip):not(.show) {
+        right: ~'calc(15px + @{tooltip-margin})';
+        min-width: max-content;
+        // UIkit
+        display: none;
+        position: absolute;
+        z-index: @tooltip-z-index;
+        top: 0;
+        box-sizing: border-box;
+        // max-width: @tooltip-max-width;
+        padding: @tooltip-padding-vertical @tooltip-padding-horizontal;
+        background: @tooltip-background;
+        border-radius: @tooltip-border-radius;
+        color: @tooltip-color;
+        font-size: @tooltip-font-size;
+
+        &[id^=editarticle-],
+        &[id^=editcontact-] {
+            left: 0;
+            right: auto;
+            top: ~'calc(-1 * (100% + @{tooltip-margin}))';
+        }
+    }
+
+    :focus + [role='tooltip']:not(.uk-tooltip),
+    :hover + [role='tooltip']:not(.uk-tooltip) { display: block; }
+
+    [role='tooltip']:not(.uk-tooltip) + * { margin-top: 0 !important; }
+
+    [aria-describedby^="editarticle-"],
+    [aria-describedby^="editcontact-"] { position: relative; }
+
+    [aria-describedby^="editarticle-"]:focus > [role='tooltip']:not(.uk-tooltip),
+    [aria-describedby^="editarticle-"]:hover > [role='tooltip']:not(.uk-tooltip),
+    [aria-describedby^="editcontact-"]:focus > [role='tooltip']:not(.uk-tooltip),
+    [aria-describedby^="editcontact-"]:hover > [role='tooltip']:not(.uk-tooltip) { display: block; }
+
+    //
+    // Front-end Editing (Tabs)
+    //
+
+    joomla-tab[view=tabs] > div[role=tablist] {
+        // Reset
+        background-color: transparent;
+        border-width: 0;
+        border-radius: 0;
+        box-shadow: none;
+        // Style
+        margin-left: -@tab-margin-horizontal;
+        padding-left: @tab-margin-horizontal;
+        margin-bottom: @global-margin;
+        column-gap: @tab-margin-horizontal;
+        .hook-tab();
+    }
+
+    joomla-tab button[role=tab] {
+        // Reset
+        padding: 0;
+        box-shadow: none;
+        // Missing Reset
+        font: inherit;
+        cursor: pointer;
+        // Style
+        padding: @tab-item-padding-vertical @tab-item-padding-horizontal;
+        color: @tab-item-color;
+        .hook-tab-item();
+    }
+
+    // Hover + Focus
+    joomla-tab button[role=tab]:hover,
+    joomla-tab button[role=tab]:focus {
+        color: @tab-item-hover-color;
+        text-decoration: @tab-item-hover-text-decoration;
+        .hook-tab-item-hover();
+    }
+
+    joomla-tab button[role=tab][aria-expanded=true] {
+        // Reset
+        background-color: transparent;
+        background-image: none;
+        box-shadow: none;
+        // Style
+        color: @tab-item-active-color;
+        .hook-tab-item-active();
+    }
+
+    joomla-tab button[aria-expanded=true]::after { display: none; }
+
+    joomla-tab > joomla-tab-element {
+        // Reset
+        padding: 0;
+        background-color: transparent;
+        border-width: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    //
+    // Front-end Editing (Controls)
+    //
+
+    .options-form legend { margin-bottom: @margin-margin; }
+    * + .options-form legend { margin-top: @margin-margin; }
+
+    .control-group { margin-bottom: @margin-margin; }
+    * + .control-group { margin-top: @margin-margin; }
+
+    .control-label {
+        margin-bottom: @form-stacked-margin-bottom;
+        .hook-form-stacked-label();
+    }
+
+    // Fix Field Editor (TinyMCE)
+    .controls { display: flow-root; }
+
+    // Field Media
+    joomla-field-media .field-media-preview {
+        // Reset
+        background-color: transparent;
+        border-width: 0;
+        border-radius: 0;
+        // Style
+        max-width: 360px;
+        background-image: linear-gradient(45deg, rgba(100,100,100,0.1) 25%, transparent 25%),
+                        linear-gradient(-45deg, rgba(100,100,100,0.1) 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, rgba(100,100,100,0.1) 75%),
+                        linear-gradient(-45deg, transparent 75%, rgba(100,100,100,0.1) 75%);
+        background-size: 20px 20px;
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        margin-bottom: @margin-small-margin;
+    }
+
+    // Field Media Subfields
+    .subform-wrapper > :last-child { margin-bottom: 0; }
+
+    // Field Repeatable
+    * + .subform-repeatable-group {margin-top: @margin-medium-margin; }
+    .subform-repeatable-group > :last-child { margin-bottom: 0; }
+
+    // Choices
+    .choices__inner {
+        // Reset
+        border-radius: 0;
+        font-size: inherit;
+        // UIkit
+        box-sizing: border-box;
+        max-width: 100%;
+        width: 100%;
+        border: 0 none;
+        padding: 0 @form-padding-horizontal !important;
+        background: @form-background;
+        color: @form-color;
+        .hook-form();
+        // UIkit Single-line
+        min-height: @form-height;
+        vertical-align: middle;
+        .hook-form-single-line();
+        // UIkit Select
+        padding-right: @form-select-padding-right;
+        .svg-fill(@internal-form-select-image, "#000", @form-select-icon-color);
+        background-repeat: no-repeat;
+        background-position: 100% 50%;
+        // Center Content
+        display: flex;
+        align-items: center;
+    }
+
+    .choices__inner when not (@form-border-radius = 0) {
+        border-radius: @form-border-radius !important;
+    }
+
+    .choices[data-type*=select-multiple] .choices__inner {
+        // height: auto;
+        // min-height: @form-height;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+    }
+
+    .is-focused .choices__inner {
+        // Reset
+        border-color: transparent;
+        // UIkit
+        outline: none;
+        background-color: @form-focus-background;
+        color: @form-focus-color;
+        .hook-form-focus();
+    }
+
+    .choices__list--single {
+        // Reset
+        padding: 0;
+        width: auto;
+    }
+
+    .choices[data-type*=select-one],
+    .choices__item--selectable { cursor: default; }
+
+    .choices[data-type*=select-one]::after { display: none; }
+
+    .choices__button_joomla {
+        // UIkit
+        margin: 0;
+        border: none;
+        overflow: visible;
+        font: inherit;
+        color: inherit;
+        text-transform: none;
+        -webkit-appearance: none;
+        border-radius: 0;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0;
+        background-color: transparent;
+        // Style
+        text-indent: -9999px;
+        position: relative;
+        opacity: 0.7;
+        margin-left: 5px;
+        width: 1em;
+    }
+
+    .choices__button_joomla::before {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        text-align: center;
+        text-indent: 0;
+        content: "\00d7";
+        cursor: pointer;
+    }
+
+    .choices__button_joomla:hover,
+    .choices__button_joomla:focus { opacity: 1; }
+
+    .choices__input {
+        // Reset
+        margin-bottom: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background-color: transparent;
+        font-size: inherit;
+        color: @form-color;
+    }
+
+    .choices__input::placeholder { color: @form-placeholder-color; }
+
+    .choices__list--multiple {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+    }
+
+    .choices__list--multiple:not(:empty) { margin-right: 10px; }
+
+    .choices__list--multiple .choices__item {
+        // Reset
+        margin: 0;
+        font: inherit;
+        border: 0 none;
+        // Style
+        padding: 3px 7px !important;
+        background: @global-muted-background;
+        border-radius: @global-border-radius;
+        font-size: @global-small-font-size;
+        // uk-link-text
+        color: inherit;
+        .hook-link-text();
+    }
+
+    .choices__list--multiple .choices__item:hover {
+        color: @link-text-hover-color;
+        .hook-link-text-hover();
+    }
+
+    .choices__list--dropdown { box-sizing: border-box; }
+
+    //
+    // Front-end Editing (Modal)
+    //
+
+    .modal-open .tm-page { z-index: auto; }
+
+    .modal iframe { width: 100%; }
+
+    .jviewport-height {
+        &10 { height: 10vh; }
+        &20 { height: 20vh; }
+        &30 { height: 30vh; }
+        &40 { height: 40vh; }
+        &50 { height: 50vh; }
+        &60 { height: 60vh; }
+        &70 { height: 70vh; }
+        &80 { height: 80vh; }
+        &90 { height: 90vh; }
+        &100 { height: 100vh; }
+    }
+
+    [class*=jviewport-height] iframe { height: 100%; }
+
+    .modal-dialog.jviewport-width {
+        &10 { width: 10vw; }
+        &20 { width: 20vw; }
+        &30 { width: 30vw; }
+        &40 { width: 40vw; }
+        &50 { width: 50vw; }
+        &60 { width: 60vw; }
+        &70 { width: 70vw; }
+        &80 { width: 80vw; }
+        &90 { width: 90vw; }
+        &100 { width: 100vw; }
+    }
+
+    .modal-dialog[class*=jviewport-width] { max-width: none; }
+
+    //
+    // Front-end Editing (CodeMirrow)
+    //
+
+    .editor-xtd-buttons { margin-bottom: -0.25em; }
+    .editor-xtd-buttons > .btn { margin-bottom: 0.25em; }
+
+    //
+    // Utility
+    //
+
+    .hidden {
+        display: none;
+        visibility: hidden;
+    }
+
+}

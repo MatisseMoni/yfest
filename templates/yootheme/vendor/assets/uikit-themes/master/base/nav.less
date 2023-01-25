@@ -1,0 +1,186 @@
+//
+// Component: Nav
+//
+// ========================================================================
+
+//
+// New
+//
+
+@nav-default-item-hover-background:             transparent;
+@nav-default-item-active-background:            transparent;
+
+@nav-primary-item-padding-vertical:             @nav-item-padding-vertical;
+@nav-primary-item-padding-horizontal:           @nav-item-padding-horizontal;
+
+@nav-primary-header-padding-vertical:           @nav-header-padding-vertical;
+@nav-primary-header-padding-horizontal:         @nav-header-padding-horizontal;
+
+@nav-secondary-margin-top:                      0;
+@nav-secondary-item-padding-vertical:           @nav-item-padding-vertical;
+@nav-secondary-item-padding-horizontal:         @nav-item-padding-horizontal;
+@nav-secondary-item-hover-background:           transparent;
+@nav-secondary-item-active-background:          transparent;
+
+
+// Variables
+// ========================================================================
+
+
+// Sublists
+// ========================================================================
+
+.hook-nav-sub() {}
+
+
+// Header
+// ========================================================================
+
+.hook-nav-header() {}
+
+
+// Divider
+// ========================================================================
+
+.hook-nav-divider() {}
+
+
+// Default style modifier
+// ========================================================================
+
+.hook-nav-default() {}
+
+.hook-nav-default-item() {
+    transition: 0.1s ease-in-out;
+    transition-property: color, background-color, border-color, box-shadow;
+}
+
+.hook-nav-default-item-hover() when not (@nav-default-item-hover-background = transparent) {
+    background-color: @nav-default-item-hover-background;
+}
+
+.hook-nav-default-item-active() when not (@nav-default-item-active-background = transparent) {
+    background-color: @nav-default-item-active-background;
+}
+
+.hook-nav-default-subtitle() {}
+
+.hook-nav-default-header() {}
+
+.hook-nav-default-divider() {}
+
+
+// Primary style modifier
+// ========================================================================
+
+.hook-nav-primary() {}
+
+.hook-nav-primary-item() {
+    transition: 0.1s ease-in-out;
+    transition-property: color, background-color, border-color, box-shadow;
+}
+
+.hook-nav-primary-item() when not (@nav-primary-item-padding-vertical = @nav-item-padding-vertical), not(@nav-primary-item-padding-horizontal = @nav-item-padding-horizontal) {
+    padding: @nav-primary-item-padding-vertical @nav-primary-item-padding-horizontal;
+}
+
+.hook-nav-primary-item-hover() {}
+
+.hook-nav-primary-item-active() {}
+
+.hook-nav-primary-subtitle() {}
+
+.hook-nav-primary-header() when not (@nav-primary-header-padding-vertical = @nav-header-padding-vertical), not(@nav-primary-header-padding-horizontal = @nav-header-padding-horizontal) {
+    padding: @nav-primary-header-padding-vertical @nav-primary-header-padding-horizontal;
+}
+
+.hook-nav-primary-divider() {}
+
+
+// Secondary style modifier
+// ========================================================================
+
+.hook-nav-secondary() when not (@nav-secondary-margin-top = 0) {
+    > :not(.uk-nav-divider) + :not(.uk-nav-header, .uk-nav-divider) {  margin-top: @nav-secondary-margin-top; }
+}
+
+.hook-nav-secondary-item() {
+    transition: 0.1s ease-in-out;
+    transition-property: color, background-color, border-color, box-shadow;
+    
+}
+
+.hook-nav-secondary-item() when not (@nav-secondary-item-padding-vertical = @nav-item-padding-vertical), not(@nav-secondary-item-padding-horizontal = @nav-item-padding-horizontal) {
+    padding: @nav-secondary-item-padding-vertical @nav-secondary-item-padding-horizontal;
+}
+
+.hook-nav-secondary-item-hover() when not (@nav-secondary-item-hover-background = transparent) {
+    background-color: @nav-secondary-item-hover-background;
+}
+
+.hook-nav-secondary-item-active() when not (@nav-secondary-item-active-background = transparent) {
+    background-color: @nav-secondary-item-active-background;
+}
+
+.hook-nav-secondary-subtitle() {}
+
+.hook-nav-secondary-subtitle-hover() {}
+
+.hook-nav-secondary-subtitle-active() {}
+
+.hook-nav-secondary-header() {}
+
+.hook-nav-secondary-divider() {}
+
+
+// Style modifier
+// ========================================================================
+
+.hook-nav-dividers() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-nav-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+@inverse-nav-default-item-hover-background:     transparent;
+@inverse-nav-default-item-active-background:    transparent;
+
+@inverse-nav-secondary-item-hover-background:   transparent;
+@inverse-nav-secondary-item-active-background:  transparent;
+
+.hook-inverse-nav-default-item() {}
+.hook-inverse-nav-default-item-hover() when not (@nav-default-item-hover-background = @inverse-nav-default-item-hover-background) {
+    background-color: @inverse-nav-default-item-hover-background;
+}
+.hook-inverse-nav-default-item-active() when not (@nav-default-item-active-background = @inverse-nav-default-item-active-background) {
+    background-color: @inverse-nav-default-item-active-background;
+}
+.hook-inverse-nav-default-header() {}
+.hook-inverse-nav-default-divider() {}
+
+.hook-inverse-nav-primary-item() {}
+.hook-inverse-nav-primary-item-hover() {}
+.hook-inverse-nav-primary-item-active() {}
+.hook-inverse-nav-primary-header() {}
+.hook-inverse-nav-primary-divider() {}
+
+.hook-inverse-nav-secondary-item() {}
+.hook-inverse-nav-secondary-item-hover() when not (@nav-secondary-item-hover-background = @inverse-nav-secondary-item-hover-background) {
+    background-color: @inverse-nav-secondary-item-hover-background;
+}
+.hook-inverse-nav-secondary-item-active() when not (@nav-secondary-item-active-background = @inverse-nav-secondary-item-active-background) {
+    background-color: @inverse-nav-secondary-item-active-background;
+}
+.hook-inverse-nav-secondary-subtitle() {}
+.hook-inverse-nav-secondary-subtitle-hover() {}
+.hook-inverse-nav-secondary-subtitle-active() {}
+.hook-inverse-nav-secondary-header() {}
+.hook-inverse-nav-secondary-divider() {}
+
+.hook-inverse-nav-dividers() {}

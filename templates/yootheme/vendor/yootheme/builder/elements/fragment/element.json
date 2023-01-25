@@ -1,0 +1,18 @@
+{
+    "name": "fragment",
+    "title": "Sublayout",
+    "group": "basic",
+    "icon": "${url:images/icon.svg}",
+    "iconSmall": "${url:images/iconSmall.svg}",
+    "element": true,
+    "container": true,
+    "width": 500,
+    "defaults": {},
+    "placeholder": {},
+    "templates": {
+        "render": "./templates/template.php",
+        "content": "./templates/content.php"
+    },
+    "fields": {},
+    "fieldset": {}
+}
